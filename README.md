@@ -1,11 +1,11 @@
- <div id="top"></div>
-
+ <div id="top" align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+</div>
 
 <br />
 <h3 align="center">Habity</h3>
