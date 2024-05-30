@@ -3,16 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Habity's documentation!
+Welcome to Habity's Documentation!
 ==================================
 
 .. toctree::
    :maxdepth: 4
-   :caption: Table of Content:
+   :caption: Table of Contents:
 
-   modules/scope.rst
+   scope/scope.rst
+   architecture/architecture.rst
 
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`
