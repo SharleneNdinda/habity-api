@@ -22,9 +22,9 @@ from rest_framework_simplejwt.views import (TokenObtainPairView,
 api_patterns = [
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("tasks/", include("habity.tasks.urls")),
 ]
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("api/", include(api_patterns)),
 ]

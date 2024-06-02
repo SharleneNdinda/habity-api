@@ -17,6 +17,12 @@ class TaskType(models.TextChoices):
     HABIT = "Habit"
 
 
+class Priority(models.TextChoices):
+    HIGH = "High"
+    MEDIUM = "Medium"
+    LOW = "Low"
+
+
 class Task(AbstractBase):
     """Holds task details."""
 
@@ -25,4 +31,4 @@ class Task(AbstractBase):
     )
     user = models.ForeignKey(CustomUser, related_name="tasks", on_delete=models.CASCADE)
     type = models.CharField(choices=TaskType.choices, max_length=50)
-    priority = models.CharField()
+    priority = models.CharField(choices=Priority.choices, max_length=50)
