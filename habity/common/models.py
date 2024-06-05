@@ -16,3 +16,6 @@ class AbstractBase(models.Model):
     created_by = models.UUIDField(editable=False)
     updated = models.DateTimeField(auto_now=True)
     updated_by = models.UUIDField()
+
+    class Meta:
+        abstract = True

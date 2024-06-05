@@ -46,7 +46,7 @@
   </ol>
 </details>
 
-## About The Project
+## 🤔 About The Project
 
 This is a passion project. It is meant to deliver the following:
 
@@ -57,6 +57,28 @@ This is a passion project. It is meant to deliver the following:
     ✅ Be able to display a calendar view of all scheduled recurring elements i.e tasks
 
     ✅ Analytics and metrics pertaining to the features outlined above
+
+### 🚀 Getting Started
+
+1. Clone repository and setup virtual environment. Install all project requirements before proceeding.
+```sh
+  $ pip install -r requirements/base.txt
+```
+
+2. Setup your local `Postgres` database, update database configs and run migrations.
+```sh
+  $ python manage.py migrate 
+```
+
+3. Run tests.
+```sh
+  $ pytest -v 
+```
+
+4. Run development server.
+```sh
+  $ python manage.py runserver
+```
 
 [contributors-shield]: https://img.shields.io/github/contributors/SharleneNdinda/habity-api?style=for-the-badge
 [contributors-url]: https://github.com/SharleneNdinda/habity-api/graphs/contributors

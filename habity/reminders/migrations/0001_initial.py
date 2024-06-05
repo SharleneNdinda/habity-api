@@ -3,7 +3,6 @@
 import uuid
 
 import django.db.models.deletion
-from django.conf import settings
 from django.db import migrations, models
 
 
@@ -11,36 +10,12 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ("tasks", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="TaskCategory",
-            fields=[
-                (
-                    "guid",
-                    models.UUIDField(
-                        default=uuid.uuid4,
-                        editable=False,
-                        primary_key=True,
-                        serialize=False,
-                    ),
-                ),
-                ("active", models.BooleanField(default=True)),
-                ("created", models.DateTimeField(auto_now_add=True)),
-                ("created_by", models.UUIDField(editable=False)),
-                ("updated", models.DateTimeField(auto_now=True)),
-                ("updated_by", models.UUIDField()),
-                ("name", models.CharField(max_length=50)),
-                ("description", models.CharField(max_length=200)),
-            ],
-            options={
-                "abstract": False,
-            },
-        ),
-        migrations.CreateModel(
-            name="Task",
+            name="Reminder",
             fields=[
                 (
                     "guid",
@@ -60,38 +35,67 @@ class Migration(migrations.Migration):
                     "type",
                     models.CharField(
                         choices=[
-                            ("Single", "Single"),
-                            ("Recurring", "Recurring"),
-                            ("Habit", "Habit"),
+                            ("Notification", "Notification"),
+                            ("Alarm", "Alarm"),
+                            ("No Reminder", "No Reminder"),
                         ],
-                        max_length=50,
+                        max_length=100,
                     ),
                 ),
+                ("time", models.DateTimeField()),
                 (
-                    "priority",
-                    models.CharField(
-                        choices=[
-                            ("High", "High"),
-                            ("Medium", "Medium"),
-                            ("Low", "Low"),
-                        ],
-                        max_length=50,
-                    ),
-                ),
-                (
-                    "user",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="tasks",
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
-                (
-                    "category",
+                    "task",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.PROTECT,
-                        related_name="tasks",
-                        to="tasks.taskcategory",
+                        related_name="reminders",
+                        to="tasks.task",
+                    ),
+                ),
+            ],
+            options={
+                "abstract": False,
+            },
+        ),
+        migrations.CreateModel(
+            name="Schedule",
+            fields=[
+                (
+                    "guid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("active", models.BooleanField(default=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("created_by", models.UUIDField(editable=False)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("updated_by", models.UUIDField()),
+                (
+                    "day_of_week",
+                    models.CharField(
+                        choices=[
+                            ("Monday", "Monday"),
+                            ("Tuesday", "Tuesday"),
+                            ("Wednesday", "Wednesday"),
+                            ("Thursday", "Thursday"),
+                            ("Friday", "Friday"),
+                            ("Saturday", "Saturday"),
+                            ("Sunday", "Sunday"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                ("start_date", models.DateTimeField()),
+                ("end_date", models.DateTimeField()),
+                (
+                    "reminder",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="schedules",
+                        to="reminders.reminder",
                     ),
                 ),
             ],

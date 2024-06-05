@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "django_filters",
     "habity.common",
+    "habity.reminders",
     "habity.tasks",
     "habity.users",
 ]
