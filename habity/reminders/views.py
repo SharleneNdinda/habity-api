@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from habity.reminders.models import Reminder
+from habity.reminders.serializers import ReminderSerializer
+
+
+class ReminderViewSet(ModelViewSet):
+    """Reminder ViewSet."""
+
+    serializer_class = ReminderSerializer
+    queryset = Reminder.objects.all()
