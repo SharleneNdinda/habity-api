@@ -80,6 +80,13 @@ This is a passion project. It is meant to deliver the following:
   $ python manage.py runserver
 ```
 
+5. Generate docs locally.
+```sh
+  $ cd docs/
+  $ make html
+  $ cd _build/html/
+```
+
 [contributors-shield]: https://img.shields.io/github/contributors/SharleneNdinda/habity-api?style=for-the-badge
 [contributors-url]: https://github.com/SharleneNdinda/habity-api/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/SharleneNdinda/habity-api?style=for-the-badge
