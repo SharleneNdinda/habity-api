@@ -1,9 +1,9 @@
-import django_filters
+from django_filters import FilterSet 
 
 from habity.tasks.models import Task
 
 
-class TaskFilter(django_filters.FilterSet):
+class TaskFilter(FilterSet):
     class Meta:
         model = Task
         fields = "__all__"
