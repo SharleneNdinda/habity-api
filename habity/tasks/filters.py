@@ -1,4 +1,4 @@
-from django_filters import FilterSet 
+from django_filters import FilterSet
 
 from habity.tasks.models import Task
 

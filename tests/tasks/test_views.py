@@ -26,7 +26,7 @@ class TestTaskViews(LoggedInMixin):
 
         result = self.client.get(url).json()
         assert len(result) == 1
-        
+
         # with filters
-        result = self.client.get(url + "?type=high").json()
+        result = self.client.get(url + "?type=low").json()
         assert len(result) == 1
