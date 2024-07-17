@@ -21,7 +21,7 @@ class TestTaskViews(LoggedInMixin):
             TaskCategory, name="Music", description="Group all music related tasks"
         )
         baker.make(
-            Task, category=category, user=self.user, type="SINGLE", priority="HIGH"
+            Task, name="Learn Music Fundamentals", category=category, user=self.user, type="SINGLE", priority="HIGH"
         )
 
         result = self.client.get(url).json()

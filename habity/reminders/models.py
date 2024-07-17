@@ -25,15 +25,4 @@ class Reminder(AbstractBase):
 
     task = models.ForeignKey(Task, related_name="reminders", on_delete=models.PROTECT)
     type = models.CharField(choices=ReminderType.choices, max_length=100)
-    time = models.DateTimeField()
-
-
-class Schedule(AbstractBase):
-    """Holds schedule details."""
-
-    reminder = models.ForeignKey(
-        Reminder, related_name="schedules", on_delete=models.PROTECT
-    )
-    day_of_week = models.CharField(choices=DayOfWeek.choices, max_length=50)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    schedule_interval = models.CharField()
