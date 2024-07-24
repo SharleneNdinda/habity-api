@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "habity.reminders",
     "habity.tasks",
     "habity.users",
+    "django_celery_beat",                   
 ]
 
 MIDDLEWARE = [

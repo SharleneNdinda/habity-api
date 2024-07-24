@@ -26,3 +26,4 @@ class Reminder(AbstractBase):
     task = models.ForeignKey(Task, related_name="reminders", on_delete=models.PROTECT)
     type = models.CharField(choices=ReminderType.choices, max_length=100)
     schedule_interval = models.CharField()
+        
