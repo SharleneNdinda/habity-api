@@ -13,3 +13,4 @@ django-cors-headers==4.3.1
 djangorestframework_simplejwt==5.3.1
 django-extensions==3.2.3
 django-filter==24.2
+cron-converter==1.2.1
