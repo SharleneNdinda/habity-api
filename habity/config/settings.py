@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "habity.reminders",
     "habity.tasks",
     "habity.users",
+    "celery",
     "django_celery_beat",
 ]
 
@@ -154,3 +155,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# set the celery broker url
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "")
+
+# set the celery result backend
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "")
+
+# set the celery timezone
+CELERY_TIMEZONE = "UTC"

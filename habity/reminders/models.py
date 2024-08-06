@@ -1,7 +1,9 @@
 import json
+
+from cron_converter import Cron
 from django.db import models
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
-from cron_converter import Cron
+
 from habity.common.models import AbstractBase
 from habity.tasks.models import Task
 
@@ -57,7 +59,7 @@ class Reminder(AbstractBase):
                 crontab=schedule,
                 name=f"{self.task.name}: {self.type}-reminder",
                 args=json.dumps([str(self.id)]),
-                    task="habity.reminders.tasks.send_task_reminder",
+                task="habity.reminders.tasks.send_task_reminder",
             )
             self.task = task
 
