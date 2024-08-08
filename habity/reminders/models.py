@@ -1,6 +1,8 @@
 import json
+import zoneinfo
 
 from cron_converter import Cron
+from django.conf import settings
 from django.db import models
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
 
@@ -30,7 +32,7 @@ class Reminder(AbstractBase):
     task = models.ForeignKey(Task, related_name="reminders", on_delete=models.PROTECT)
     type = models.CharField(choices=ReminderType.choices, max_length=100)
     schedule_interval = models.CharField()
-    task = models.ForeignKey(
+    periodic_task = models.ForeignKey(
         PeriodicTask,
         blank=True,
         null=True,
@@ -53,14 +55,17 @@ class Reminder(AbstractBase):
                 day_of_week=cron[2],
                 day_of_month=cron[3],
                 month_of_year=cron[4],
+                timezone=zoneinfo.ZoneInfo(settings.TIME_ZONE),
             )
 
+            # creates crontab-based periodic task
             task = PeriodicTask.objects.create(
                 crontab=schedule,
-                name=f"{self.task.name}: {self.type}-reminder",
-                args=json.dumps([str(self.id)]),
+                name=f"{self.type}-reminder",
+                args=json.dumps([str(self.guid)]),
                 task="habity.reminders.tasks.send_task_reminder",
+                queue=settings.CELERY_DEFAULT_QUEUE,
             )
-            self.task = task
+            self.periodic_task = task
 
         super().save(*args, **kwargs)
