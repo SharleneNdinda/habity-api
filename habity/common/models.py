@@ -4,7 +4,7 @@ from django.db import models
 
 
 class AbstractBase(models.Model):
-    """Common model to be used througout the project."""
+    """Common model to be used throughout the project."""
 
     guid = models.UUIDField(
         primary_key=True,
