@@ -139,7 +139,7 @@ SIMPLE_JWT = {
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Africa/Nairobi"
 
 USE_I18N = True
 
@@ -156,11 +156,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+CELERY_DEFAULT_QUEUE = "habity_tasks"
+# set the celery timezone
+CELERY_TIMEZONE = TIME_ZONE
 # set the celery broker url
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "")
-
 # set the celery result backend
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "")
-
-# set the celery timezone
-CELERY_TIMEZONE = "UTC"

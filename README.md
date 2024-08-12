@@ -87,6 +87,11 @@ This is a passion project. It is meant to deliver the following:
   $ cd _build/html/
 ```
 
+6. Run Celery Worker
+```sh
+  $ celery -A habity.config worker --loglevel=info
+```
+
 [contributors-shield]: https://img.shields.io/github/contributors/SharleneNdinda/habity-api?style=for-the-badge
 [contributors-url]: https://github.com/SharleneNdinda/habity-api/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/SharleneNdinda/habity-api?style=for-the-badge
