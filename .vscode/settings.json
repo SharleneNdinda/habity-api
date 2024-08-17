@@ -1,5 +1,0 @@
-{
-    "editor.formatOnSave": true,
-    "diffEditor.hideUnchangedRegions.contextLineCount": 3,
-    "files.autoSave": "afterDelay"
-}
